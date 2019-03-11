@@ -1,9 +1,7 @@
 # dataEMPREL
 Sistematização de dados de saneamento para disponibilização no portal de Dados Abertos da Prefeitura do Recife
 
-[CRIAR TABELA DE DADOS]
-
-### A aulas estão organizadas na seguinte estrutura:
+### Dados sistematizados
 
 | **Dado**                      | **Nível de Agregação**  | **Anos Disponíveis** |   **Fonte**  |         
 | ----------------------------- |:----------------------: | :------------------: | :-----------:

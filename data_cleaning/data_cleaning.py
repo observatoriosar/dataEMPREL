@@ -34,3 +34,4 @@ ibgeEsgoto2000 = ibgeEsgoto2000.parse(0)
 
 ibgeEsgoto2010 = pd.ExcelFile('original_data/IBGE/esgotamento-CENSO2010.xls')
 ibgeEsgoto2010 = ibgeEsgoto2010.parse(0)
+print(ibgeEsgoto2010)

@@ -1,9 +1,9 @@
-# dataEMPREL
+# dataSANEAR
 Sistematização de dados de saneamento para disponibilização no portal de Dados Abertos da Prefeitura do Recife
 
 ### Dados sistematizados
 
-| **Dado**                                   | **Nível de Agregação**  | **Anos Disponíveis** |   **Fonte**  |         
+| **Informação**                                   | **Nível de Agregação**  | **Anos Disponíveis** |   **Fonte**  |         
 | ------------------------------------------ |:----------------------: | :------------------: | :-----------:
 | Consumo médio percapita de água            | Município        | 2001 até 2017 | SNIS |
 | Índice de esgoto tratado referido à água consumida | Município | 2001 até 2017 | SNIS |

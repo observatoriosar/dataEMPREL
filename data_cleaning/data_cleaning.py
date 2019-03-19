@@ -10,9 +10,7 @@ claudioalvesmonteiro.github.io
 import pandas as pd
 import unidecode
 
-# unaccented_string contains 'Malaga'and is of type 'str
 #===== importar dados =====#
-
 
 # SNIS
 #dataSNIS = pd.ExcelFile('original_data/SNIS_serie_Recife.xlsx').parse(0)
@@ -27,44 +25,65 @@ ibgeAguaLixo2010 = pd.ExcelFile('original_data/IBGE/abastecimento_agua-destino_l
 ibgeEsgoto2000 = pd.ExcelFile('original_data/IBGE/esgotamento-CENSO2000.xls').parse(0)
 ibgeEsgoto2010 = pd.ExcelFile('original_data/IBGE/esgotamento-CENSO2010.xls').parse(0)
 
-#
-df=ibgeAgua2000
-def numVarName(df)):
-    str_ange = range(0, df.length())
-    
 
 #===========================#
 # Padronizacao
 #===========================#
 
-# funcao para padronizar nomes das variaveis
+#----- funcao para padronizar nomes das variaveis -----#
 def standVarName(frase):
+    """ transforma \n ou " " em _
+        nao incorpora " " seguidos
+        retira caracteres latinos (acentos)
+        caixa baixa
+    """
     std_string = ""
-    for caracter in frase:
-        if caracter == " ":
-            std_string += "_"
-        else:
-            std_string += unidecode.unidecode(caracter)
-    return std_string.lower()
+    prev_chr = ""
+    if isinstance(frase, str):
+        for caracter in frase:
+            if caracter == "\n" or caracter == " " and prev_chr != " ":
+                std_string += "_"
+            elif caracter != " " and caracter != "\n":
+                std_string += unidecode.unidecode(caracter) # tratar " " seguindo de caracter
+            # verifica se ultimos dois caracteres sao "__" e retorna string
+            elif (std_string[len(std_string)-2:len(std_string)]) == "__":
+                    return std_string[0:len(std_string)-1].lower()
+            prev_chr = caracter
+    return std_string[0:len(std_string)-1].lower()
 
 test = "Caçamba de serviço de limpeza"
 print(standVarName(test))
 
+x = df.loc[[4]].values.flatten().tolist()
+for i in x: print(standVarName(i))
+
+
 #----------------------
 # ibgeAgua2000
 
-df = ibgeAgua2000 
+df=ibgeAgua2000
+
+def stdData0(df):
+    """ Padronizar banco de dados ibgeAgua200
+    """
+    # lista com os codigos das colunas
+    str_ange = list( range(0, (df.shape[1])))
+    # renomear colunas
+    df.columns = [str(i) for i in str_ange]
+
+    # capturar nomes
+    NomesColunas = dataCVM.loc[[0]].values.flatten().tolist()
+
+    return ""
+    """ IF TOTAL: PEGAR NOME CELULA ACIMA
+    """
+
+df = ibgeAgua2000
 def stdIBGEagua200(df):
     # capturar nomes das variaveis
     var_name = ["localidade"]
     var_name.append(df[])
 
-
-
-
-pd.options.display.max_columns = 50
-pd.options.display.max_rows = 50
-print(ibgeAgua2000) 
 
 #========================#
 # Combinacao
